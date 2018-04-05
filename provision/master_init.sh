@@ -7,4 +7,8 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+FLANNEL_VERSION=v0.9.1
+curl -o /tmp/kube-flannel.yml https://raw.githubusercontent.com/coreos/flannel/$FLANNEL_VERSION/Documentation/kube-flannel.yml
+sed -i.bak 's|"/opt/bin/flanneld",|"/opt/bin/flanneld", "--iface=eth1",|' /tmp/kube-flannel.yml
+kubectl apply -f /tmp/kube-flannel.yml
+echo 'source <(kubectl completion bash)' >> $HOME/.bashrc
