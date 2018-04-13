@@ -16,7 +16,7 @@ sed -i '/swap/d' /etc/fstab
 setenforce 0
 sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubelet kubeadm kubectl
+yum install -y kubelet kubeadm kubectl nfs-utils
 
 cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
