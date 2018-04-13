@@ -9,13 +9,14 @@ Build cluster
 
 Execute: `./build_cluster.sh` 
 
-This script creates three virtual machines:
+This script creates four virtual machines:
 
   | name   | IP            |
   | ------ | ------------- |
   | master | 192.168.33.20 |
   | node1  | 192.168.33.21 |
   | node2  | 192.168.33.22 |
+  | nfspv  | 192.168.33.23 |
 
 
 To access this machines just use `vagrant ssh <machine>`, for example:
