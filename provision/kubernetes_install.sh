@@ -16,7 +16,12 @@ sed -i '/swap/d' /etc/fstab
 setenforce 0
 sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubelet kubeadm kubectl
+yum install -y kubelet-1.11.3 kubeadm-1.11.3 kubectl-1.11.3 ipvsadm
+
+modprobe ip_vs
+modprobe ip_vs_rr
+modprobe ip_vs_sh
+modprobe ip_vs_wrr
 
 cat <<EOF >  /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -24,6 +29,7 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sysctl --system
 
+NODE_IP=$(ip -br -4 address show eth1 | awk '{split($3,ip,"/"); print ip[1]}')
 cat << EOF > /etc/systemd/system/kubelet.service.d/50-customs.conf
 [Service]
 Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
