@@ -3,7 +3,7 @@ CKA Lab
 
 Laboratory environment for "Certified Kubernetes Administrator (CKA)" Linux Academy course
 
-kubernetes v1.12 (to use a different version look at https://github.com/pbacterio/cka_lab/tags)
+kubernetes v1.13 (to use a different version look at https://github.com/pbacterio/cka_lab/tags)
 
 Build cluster
 -------------
@@ -34,12 +34,12 @@ Example:
 
 ```
 [pbacterio@localhost cka_lab]$ vagrant ssh master
-Last login: Tue Mar 20 12:56:07 2018 from 192.168.121.1
+Last login: Mon Jan 28 09:24:31 2019 from 192.168.121.1
 [vagrant@master ~]$ kubectl get nodes
-NAME      STATUS    ROLES     AGE       VERSION
-master    Ready     master    6d        v1.9.4
-node1     Ready     <none>    6d        v1.9.4
-node2     Ready     <none>    6d        v1.9.4
+NAME     STATUS   ROLES    AGE     VERSION
+master   Ready    master   2m57s   v1.13.2
+node1    Ready    <none>   2m15s   v1.13.2
+node2    Ready    <none>   2m12s   v1.13.2
 ```
 
 
