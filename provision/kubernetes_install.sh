@@ -16,7 +16,7 @@ sed -i '/swap/d' /etc/fstab
 setenforce 0
 sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubelet-1.11.3 kubeadm-1.11.3 kubectl-1.11.3 ipvsadm
+yum install -y kubelet-1.12.1 kubeadm-1.12.1 kubectl-1.12.1 ipvsadm
 
 modprobe ip_vs
 modprobe ip_vs_rr
