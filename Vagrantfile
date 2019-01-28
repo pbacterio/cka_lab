@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
     for p in [:virtualbox, :libvirt] do
       master.vm.provider p do |provider|
         provider.memory = 2048
+        provider.cpus = 2
       end
     end
   end
@@ -24,6 +25,7 @@ Vagrant.configure("2") do |config|
       for p in [:virtualbox, :libvirt] do
         node.vm.provider p do |provider|
           provider.memory = 2048
+          provider.cpus = 2
         end
       end
     end
