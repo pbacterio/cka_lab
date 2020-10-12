@@ -16,8 +16,8 @@ sed -i '/swap/d' /etc/fstab
 setenforce 0
 sed -i 's/^SELINUX=.*/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubelet-1.13.2
-yum install -y kubeadm-1.13.2 ipvsadm
+yum install -y kubelet-1.13.12
+yum install -y kubeadm-1.13.12 ipvsadm
 
 modprobe ip_vs
 modprobe ip_vs_rr
@@ -31,10 +31,8 @@ EOF
 sysctl --system
 
 NODE_IP=$(ip -br -4 address show eth1 | awk '{split($3,ip,"/"); print ip[1]}')
-cat << EOF > /etc/systemd/system/kubelet.service.d/50-customs.conf
-[Service]
-Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
-Environment="KUBELET_EXTRA_ARGS=--node-ip=${NODE_IP}"
+cat << EOF > /etc/sysconfig/kubelet
+KUBELET_EXTRA_ARGS="--node-ip=${NODE_IP}"
 EOF
 
 systemctl enable kubelet
