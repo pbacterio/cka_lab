@@ -14,9 +14,9 @@ This script creates three virtual machines:
 
   | name   | IP            |
   | ------ | ------------- |
-  | master | 192.168.33.20 |
-  | node1  | 192.168.33.21 |
-  | node2  | 192.168.33.22 |
+  | master | 192.168.88.20 |
+  | node1  | 192.168.88.21 |
+  | node2  | 192.168.88.22 |
 
 
 To access this machines just use `vagrant ssh <machine>`, for example:
